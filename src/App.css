@@ -29,9 +29,10 @@
   align-items: center;
 }
 
-.data-display {
+.list {
   display: flex;
   flex-direction: column;
+  /*min-width: 352px;*/
   margin: 24px 0;
   box-sizing: border-box;
   border: 1px solid hotpink;
