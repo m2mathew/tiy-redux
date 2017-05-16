@@ -2,6 +2,7 @@
   text-align: center;
   display: flex;
   flex-direction: column;
+  background-color: #eee;
 }
 
 .App-logo {
@@ -12,10 +13,10 @@
 .App-header {
   flex: 1 1 auto;
   font-family: "Source Code Pro";
-  background-color: #ddd;
+  background-color: #555;
   height: 175px;
   padding: 20px;
-  color: #754BB8;
+  color: #fff;
 }
 
 .App-main {
