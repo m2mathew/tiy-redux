@@ -1,21 +1,54 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  animation: App-logo-spin infinite 45s linear;
+  height: 100px;
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
+  flex: 1 1 auto;
+  font-family: "Source Code Pro";
+  background-color: #ddd;
+  height: 175px;
   padding: 20px;
-  color: white;
+  color: #754BB8;
 }
 
-.App-intro {
+.App-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  margin: 80px;
+  margin-top: 48px;
+  padding: 24px;
   font-size: large;
+  align-items: center;
+}
+
+.data-display {
+  display: flex;
+  flex-direction: column;
+  margin: 24px 0;
+  box-sizing: border-box;
+  border: 1px solid hotpink;
+}
+
+
+.main-form {
+  display: flex;
+  flex-direction: column;
+  padding: 48px;
+  margin: 24px 0;
+  box-sizing: border-box;
+  border: 1px solid slateblue;
+}
+
+.submit-button {
+  margin-top: 24px;
 }
 
 @keyframes App-logo-spin {
