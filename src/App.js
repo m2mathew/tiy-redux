@@ -1,7 +1,8 @@
 // External Dependencies
 import Paper from 'material-ui/Paper';
+import PropTypes from 'prop-types';
 import RaisedButton from 'material-ui/RaisedButton';
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import {
   Table,
@@ -16,13 +17,18 @@ import {
 import connectComponent from './helpers/connect-component';
 import logo from './logo.svg';
 import './App.css';
-import { update } from './state/ui/actions';
+import {
+  add,
+  update,
+} from './state/ui/actions';
 
 // Component Definition
 class App extends Component {
   static PropTypes = {
     firstName: PropTypes.string,
+    onAdd: PropTypes.func.isRequired,
     onUpdate: PropTypes.func.isRequired,
+    users: PropTypes.array,
   }
 
   static defaultProps = {
@@ -30,15 +36,19 @@ class App extends Component {
   }
 
   render() {
-    console.log('hello', this.props);
-
     const {
       firstName,
+      onAdd,
       onUpdate,
+      users,
     } = this.props;
 
     // map over the data and create the table rows
-    // const renderTableRows = () =>
+    const renderTableRows = () => users.map(user => (
+      <TableRow key={user.firstName}>
+        <TableRowColumn>{user.firstName}</TableRowColumn>
+      </TableRow>
+    ));
 
     return (
       <div className="App">
@@ -63,18 +73,7 @@ class App extends Component {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                <TableRow>
-                  <TableRowColumn>Caitlin</TableRowColumn>
-                </TableRow>
-                <TableRow>
-                  <TableRowColumn>Michael</TableRowColumn>
-                </TableRow>
-                <TableRow>
-                  <TableRowColumn>Eric</TableRowColumn>
-                </TableRow>
-                <TableRow>
-                  <TableRowColumn>Doug</TableRowColumn>
-                </TableRow>
+                {renderTableRows()}
               </TableBody>
             </Table>
           </div>
@@ -83,10 +82,12 @@ class App extends Component {
             <TextField
               floatingLabelText="Enter first name"
               onChange={event => onUpdate({ firstName: event.target.value })}
+              value={firstName}
             />
             <RaisedButton
               className="submit-button"
               label="Submit"
+              onTouchTap={onAdd}
               primary
             />
           </div>
@@ -99,13 +100,16 @@ class App extends Component {
 }
 
 export default connectComponent((state) => {
+  console.log('state is:', state);
 
   // map state to props here
   return {
-    firstName: state.firstName,
+    firstName: state.ui.form.firstName,
+    users: state.users.apiData.Items,
   }
 
 }, {
   // map dispatch to props here
+  onAdd: add,
   onUpdate: update,
 }, App);

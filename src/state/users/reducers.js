@@ -25,7 +25,11 @@ const apiDataDefault = {
 // Reducers
 export const apiData = createReducer(apiDataDefault, {
   [USER_POST_SUCCESS]: (state, action) => ({
-    ...action.apiData,
+    ...state,
+    Items: [
+      ...state.Items,
+      ...action.changes,
+    ],
   }),
 });
 
@@ -47,5 +51,6 @@ export const isPutting = createReducer(false, {
 export default combineReducers({
   apiData,
   isGetting,
+  isPosting,
   isPutting,
 });

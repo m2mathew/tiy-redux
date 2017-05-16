@@ -18,5 +18,5 @@ export const postUser = (changes) =>
     // and pass the `response` to the success action creator
     // or catch an error and tell the user it was not successful
 
-    return dispatch(postSuccess(changes))
+    return dispatch(postSuccess([ changes ]))
   };

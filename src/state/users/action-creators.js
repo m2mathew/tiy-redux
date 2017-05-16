@@ -21,9 +21,9 @@ export const postRequest = () => ({
   type: USER_POST_REQUEST,
 });
 
-export const postSuccess = () => ({
+export const postSuccess = changes => ({
   type: USER_POST_SUCCESS,
-});
+  changes,
 });
 
 export const putRequest = () => ({
