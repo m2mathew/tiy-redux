@@ -37,6 +37,9 @@ class App extends Component {
       onUpdate,
     } = this.props;
 
+    // map over the data and create the table rows
+    // const renderTableRows = () =>
+
     return (
       <div className="App">
 
